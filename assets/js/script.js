@@ -1,4 +1,5 @@
 // Access toggle switch HTML element
+var screentimer = document.querySelector(".time");
 var startbutton = document.querySelector(".start-button");
 var quizdiv = document.querySelector(".quiz-div");
 var quizanswer = document.querySelector("ul");
@@ -20,16 +21,17 @@ var numofcorrect = 0;
 var numofwrong = 0;
 var questiontoanswer = 0;
 var answerstart = 0;
+var secondsLeft = 15;
 
 // Listen for a click event on toggle switch
 startbutton.addEventListener("click", function() {
-  quizdiv.setAttribute("hidden", true);
-  //quizquestion.setAttribute("hidden", false);
-  //quizanswer.setAttribute("visibility", visible);
+  quizdiv.setAttribute("style", "visibility: hidden");
+  screentimer.setAttribute("style", "visibility: visible");
   quizquestion.setAttribute("style", "visibility: visible");
   quizanswer.setAttribute("style", "visibility: visible");
   answerend = 5;
   populateQuestions(questiontoanswer);
+  setTime();
   }
 )
 
@@ -46,7 +48,6 @@ function populateQuestions(parquestionnum) {
   answerstart ++;
   localStorage.setItem("answer", allanswers[answerstart]);
   answerstart ++;
-
  }
 
 function validateanswer(event) {
@@ -59,36 +60,30 @@ function validateanswer(event) {
   }
   else
   {
+    secondsLeft = secondsLeft - 3;
+    if (secondsLeft <= 0)
+    {
+      secondsLeft = 0;
+    }
+    screentimer.textContent = secondsLeft + " seconds.";
     numofwrong ++;
     answemsg.textContent = "Wrong"
   }
+  
   questiontoanswer ++;
-  if (questiontoanswer >= 5)
-  {
-    quizquestion.setAttribute("style", "visibility: hidden");
-    quizanswer.setAttribute("style", "visibility: hidden");
-    answemsg.textContent = " "
 
-    
-    finalcontainer.setAttribute("style", "visibility: visible");
-    //submitbutton.setAttribute("style", "visibility: visible");
- 
-    if (numofcorrect <= 1)
+  if (secondsLeft <= 0)
+  {
+    displaytotalresult();
+    setTime();
+  } else if (questiontoanswer >= 5)
     {
-      finalanswermsg.textContent = "You have " + numofcorrect + " correct answer.";
+      displaytotalresult();
     }
     else
     {
-      finalanswermsg.textContent = "You have " + numofcorrect + " correct answers.";
+      populateQuestions(questiontoanswer);
     }
-    
-    
-  }
-  else
-  {
-    populateQuestions(questiontoanswer);
-  }
-
 }
 
 bttona.addEventListener("click", validateanswer);
@@ -127,3 +122,38 @@ submitbutton.addEventListener("click", function(event) {
     renderLastRegistered();
   }
 });
+
+function setTime() {
+  // Sets interval in variable
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    
+    if(secondsLeft <= 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+      secondsLeft = 0;
+      displaytotalresult();
+    }
+
+    screentimer.textContent = secondsLeft + " seconds.";
+
+  }, 1000);
+}
+
+function displaytotalresult()
+{
+  quizquestion.setAttribute("style", "visibility: hidden");
+  quizanswer.setAttribute("style", "visibility: hidden");
+  answemsg.textContent = " "
+  
+  finalcontainer.setAttribute("style", "visibility: visible");
+
+  if (numofcorrect <= 1)
+  {
+    finalanswermsg.textContent = "You have " + numofcorrect + " correct answer.";
+  }
+  else
+  {
+    finalanswermsg.textContent = "You have " + numofcorrect + " correct answers.";
+  }
+}
