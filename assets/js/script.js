@@ -8,8 +8,9 @@ var bttonb = document.querySelector(".buttonb");
 var bttonc = document.querySelector(".buttonc");
 var bttond = document.querySelector(".buttond");
 var finalcontainer = document.querySelector(".final-container");
-var submitbutton = document.querySelector(".submit-button");
-
+var submitbutton = document.querySelector("#submit");
+var userinput = document.querySelector("#userid");
+var userscoremsg = document.querySelector("#userscore-msg");
 
 var finalanswermsg = document.querySelector(".finalanswer-msg");
 var answemsg = document.querySelector("#answer-message");
@@ -95,4 +96,34 @@ bttonb.addEventListener("click", validateanswer);
 bttonc.addEventListener("click", validateanswer);
 bttond.addEventListener("click", validateanswer);
 
+function displayMessage(type, message) {
+  userscoremsg.textContent = message;
+  userscoremsg.setAttribute("class", type);
+}
 
+function renderLastRegistered() {
+  var userid = localStorage.getItem("userid");
+  var score = localStorage.getItem("score");
+
+  if (!userid || !score) {
+    return;
+  }
+
+  //userEmailSpan.textContent = email;
+  //userPasswordSpan.textContent = password;
+}
+
+submitbutton.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  if (userinput === "") {
+    displayMessage("error", "User Initial cannot be blank");
+  } else 
+  {
+    displayMessage("success", "Score is added successfully");
+
+    localStorage.setItem("userid", userinput);
+    localStorage.setItem("score", numofcorrect);
+    renderLastRegistered();
+  }
+});
