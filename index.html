@@ -33,32 +33,41 @@
         </div>
     </div>
     <div class="clearfix">
-    <div class="card">
-      <h3>All Done</h3>
-      
-      <form method="POST">
-        <div class="finalanswer-msg"></div>
-        <div class="input-group">
-          <label for="userid">User Initial</label>
-          <input type="text" name="userid" id="userid" placeholder="Enter yoir initial" />
+      <div class="card">
+        <h3>All Done</h3>
+        <form method="POST">
+          <div class="finalanswer-msg"></div>
+          <div class="input-group">
+            <label for="userid">User Initial</label>
+            <input type="text" name="userid" id="userid" placeholder="Enter yoir initial" />
+          </div>
+          <div id="userscore-msg"></div>
+          <button id="submit">Add</button>
+        </form>
+      </div>
+      <div class="cardscore">
+        <div class="cardrow">
+          <div class="cardcolumn">
+            <div class="cardtitle">User Initial</div>
+          </div>  
+          <div class="cardcolumn">
+            <div class="cardtitle">Score</div>
+          </div>
+        </div> 
+        <div class="cardrow">
+          <div class="cardcolumnlist">
+            <ul class="scoreanswer" id="user-list">
+            </ul>
+          </div>  
+          <div class="cardcolumnlist"> 
+            <ul class="scoreanswer" id="score-list">
+            </ul>
+          </div>
         </div>
-        <div id="userscore-msg"></div>
-        <button id="submit">Add</button>
-      </form>
-    </div>
-    <div class="card">
-      <h2>User Score Card:</h2>
-      <p><strong>User Initial:</strong> <span id="user-initial"></span></p>
-      <p><strong>Score:</strong> <span id="user-score"></span></p>
+        <button class="cardrow gamebutton" id="game-button">Go To Game</button>
+      </div>
     </div>
   </div>
-</div>
-  
-    
-
-  
-    
-
   <script src="./assets/js/script.js"></script>
 </body>
 </html>
