@@ -61,7 +61,6 @@ gamebutton.addEventListener("click", function() {
 startbutton.addEventListener("click", function() {
     setTime();
     screentimer.setAttribute("style", "visibility: visible");
-    startbutton.setAttribute("style", "display: none");
     quizquestion.setAttribute("style", "visibility: visible");
     quizanswer.setAttribute("style", "visibility: visible");
     answemsg.setAttribute("style", "visibility: visible");
@@ -83,6 +82,7 @@ function populateQuestions(parquestionnum) {
   answerstart ++;
   localStorage.setItem("answer", allanswers[answerstart]);
   answerstart ++;
+  startbutton.setAttribute("style", "display: none");
  }
 
  // After the user clicks one of the answer buttons, the app will validate the answer before proceeding to next question
