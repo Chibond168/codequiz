@@ -5,64 +5,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Click Event</title>
+  <title>Javascript Code Quiz</title>
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 
 <body>
-  <div class="container dark">
-    <div class="quiz-div">Code Quiz
+  <div class="container">
+    <div class="quiz-title">Javascript Code Quiz
+        <div>
+          <h1 class="time"></h1>
+        </div>
         <div>
           <button class="start-button">CLICK TO START</button>
         </div>
+        <div class="question-row">
+        </div>
+        <div>
+          <ul class="answer">
+            <li><button class="buttona">A</button></li>
+            <li><button class="buttonb">B</button></li>
+            <li><button class="buttonc">C</button></li>
+            <li><button class="buttond">D</button></li>
+          </ul>
+        </div>
+        <div>
+          <label id="answer-message" class="msg"></label>
+        </div>
     </div>
-    <div>
-      <h1 class="time" style="text-align:center;"></h1>
-    </div>
-    <div class="row">
-      
-    </div>
-    <div>
-      <ul class="answer">
-        <li><button class="buttona">A</button></li>
-        <li><button class="buttonb">B</button></li>
-        <li><button class="buttonc">C</button></li>
-        <li><button class="buttond">D</button></li>
-      </ul>
-    </div>
-    <div>
-      <label id="answer-message" class="msg"></label>
-    </div>
-    <div class="final-container">
-      <div class="completed-msg">All Done
-        <div class="finalanswer-msg">text
-          
-      </div>
-    </div>
-
     <div class="clearfix">
-      <div class="card">
-        <h2>Sign Up</h2>
-        <form method="POST">
-          <div class="input-group">
-            <label for="userid">User Initial</label>
-            <input type="text" name="userid" id="userid" placeholder="Enter yoir initial" />
-          </div>
-          <div id="userscore-msg"></div>
-          <button id="submit">Add</button>
-        </form>
-      </div>
-      <div class="card">
-        <h2>User Score Card:</h2>
-        <p><strong>User Initial:</strong> <span id="user-initial"></span></p>
-        <p><strong>Score:</strong> <span id="user-score"></span></p>
-      </div>
+    <div class="card">
+      <h3>All Done</h3>
+      
+      <form method="POST">
+        <div class="finalanswer-msg"></div>
+        <div class="input-group">
+          <label for="userid">User Initial</label>
+          <input type="text" name="userid" id="userid" placeholder="Enter yoir initial" />
+        </div>
+        <div id="userscore-msg"></div>
+        <button id="submit">Add</button>
+      </form>
     </div>
-
-
-
-    
+    <div class="card">
+      <h2>User Score Card:</h2>
+      <p><strong>User Initial:</strong> <span id="user-initial"></span></p>
+      <p><strong>Score:</strong> <span id="user-score"></span></p>
+    </div>
   </div>
+</div>
   
     
 

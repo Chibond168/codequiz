@@ -1,37 +1,39 @@
 // Access toggle switch HTML element
 var screentimer = document.querySelector(".time");
 var startbutton = document.querySelector(".start-button");
-var quizdiv = document.querySelector(".quiz-div");
 var quizanswer = document.querySelector("ul");
-var quizquestion = document.querySelector(".row");
+var quizquestion = document.querySelector(".question-row");
 var bttona = document.querySelector(".buttona");
 var bttonb = document.querySelector(".buttonb");
 var bttonc = document.querySelector(".buttonc");
 var bttond = document.querySelector(".buttond");
-var finalcontainer = document.querySelector(".final-container");
 var submitbutton = document.querySelector("#submit");
 var userinput = document.querySelector("#userid");
 var userscoremsg = document.querySelector("#userscore-msg");
-
 var finalanswermsg = document.querySelector(".finalanswer-msg");
 var answemsg = document.querySelector("#answer-message");
+var trumpcard = document.querySelector(".card");
 var allquestions = ["1. JavaScripted was invented by _____ .", "2. What command is used to show 'Hello' in a dialog box?", "3. Which of the following is not valid for a function call?", "4. Which of the following array statement is correct?", "5. Javascript file has an extension of "];
 var allanswers = ["A. Steve Jobs", "B. Bill Gates", "C. Brendan Eich", "D. Larry Ellison", "C", "A. msg", "B. alert", "C. msgbox", "D. console.log", "B", "A. var x=afunction;", "B. afunction();", "C. afunction();", "D. x=afunction();", "B", "A. array{0}", "B. Array<0>", "C. Array(0)", "D. Array[0]", "D", "A. Exe", "B. java", "C. Js", "D. Xml", "C"]
 var numofcorrect = 0;
 var numofwrong = 0;
 var questiontoanswer = 0;
 var answerstart = 0;
-var secondsLeft = 15;
+var secondsLeft = 16;
 
-// Listen for a click event on toggle switch
+// Listen for a click event on start button
 startbutton.addEventListener("click", function() {
-  quizdiv.setAttribute("style", "visibility: hidden");
+  setTime();
+  startbutton.setAttribute("style", "visibility: hidden");
   screentimer.setAttribute("style", "visibility: visible");
   quizquestion.setAttribute("style", "visibility: visible");
   quizanswer.setAttribute("style", "visibility: visible");
+  answemsg.setAttribute("style", "visibility: visible");
+  answemsg.textContent = "";
   answerend = 5;
+  
   populateQuestions(questiontoanswer);
-  setTime();
+  
   }
 )
 
@@ -65,7 +67,7 @@ function validateanswer(event) {
     {
       secondsLeft = 0;
     }
-    screentimer.textContent = secondsLeft + " seconds.";
+    screentimer.textContent = "Remaining time: " + secondsLeft + " seconds.";
     numofwrong ++;
     answemsg.textContent = "Wrong"
   }
@@ -135,7 +137,7 @@ function setTime() {
       displaytotalresult();
     }
 
-    screentimer.textContent = secondsLeft + " seconds.";
+    screentimer.textContent = "Remaining time: " + secondsLeft + " seconds.";
 
   }, 1000);
 }
@@ -145,15 +147,14 @@ function displaytotalresult()
   quizquestion.setAttribute("style", "visibility: hidden");
   quizanswer.setAttribute("style", "visibility: hidden");
   answemsg.textContent = " "
-  
-  finalcontainer.setAttribute("style", "visibility: visible");
-
   if (numofcorrect <= 1)
   {
     finalanswermsg.textContent = "You have " + numofcorrect + " correct answer.";
   }
   else
   {
-    finalanswermsg.textContent = "You have " + numofcorrect + " correct answers.";
+   finalanswermsg.textContent = "You have " + numofcorrect + " correct answers.";
   }
+  trumpcard.setAttribute("style", "visibility: visible");
+
 }
