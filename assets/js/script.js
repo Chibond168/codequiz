@@ -23,7 +23,7 @@ var numofcorrect = 0;
 var numofwrong = 0;
 var questiontoanswer = 0;
 var answerstart = 0;
-var secondsLeft = 106;
+var secondsLeft = 16;
 var scorelist = [];
 
 // This function is being called below and will run when the page loads.
@@ -48,7 +48,13 @@ gamebutton.addEventListener("click", function() {
     usrList.setAttribute("style", "visibility: hidden");
     scoList.setAttribute("style", "visibility: hidden");
     answemsg.textContent = "";  
+    questiontoanswer = 0;
     answerend = 5;
+    answerstart = 0;
+    secondsLeft = 16;
+    numofcorrect = 0;
+    numofwrong = 0;
+    userinput.value = "";
   }
 )
 
