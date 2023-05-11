@@ -43,7 +43,6 @@ function init() {
 // Score card will display all previous scores first, the user can click the Game button and go to the Game page
 gamebutton.addEventListener("click", function() {
     scorecard.setAttribute("style", "visibility: hidden");
-    //startbutton.setAttribute("style", "visibility: visable");
     startbutton.setAttribute("style", "display: inline-flex");
     usrList.setAttribute("style", "visibility: hidden");
     scoList.setAttribute("style", "visibility: hidden");
@@ -62,6 +61,7 @@ gamebutton.addEventListener("click", function() {
 startbutton.addEventListener("click", function() {
     setTime();
     screentimer.setAttribute("style", "visibility: visible");
+    startbutton.setAttribute("style", "display: none");
     quizquestion.setAttribute("style", "visibility: visible");
     quizanswer.setAttribute("style", "visibility: visible");
     answemsg.setAttribute("style", "visibility: visible");
