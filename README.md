@@ -8,10 +8,10 @@ A score card will display the users initials along with the score.
 If the user wants to play the quiz again, the user can click 'Go To Game' button and it will take the user to the start page.
 
 Technical highlight:
-Use DOM function - document.querySelector to search the element on the screen
+Use DOM function - document.querySelector to search the element on the screen.
 Use Array to hold the questions and answers.
 Use local storage to store temporary user id, score.
-Use setInterval to set the timer.  
+Use setInterval to set the timer.
 Use clearInterval to set the timer.
 Use setAttribute to change the style of the element in run time.
 Use JSON function to store and retrieve the content from the local storage.
